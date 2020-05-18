@@ -26,6 +26,7 @@ LOG = oslo_logging.getLogger(__name__)
 def get_metadata_service():
     # Return the first service that loads correctly
     cl = classloader.ClassLoader()
+    LOG.error("Start get metadata")
     for class_path in CONF.metadata_services:
         service = cl.load_class(class_path)()
         try:
