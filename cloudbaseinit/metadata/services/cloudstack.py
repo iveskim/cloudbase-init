@@ -50,7 +50,7 @@ class CloudStack(base.BaseHTTPMetadataService):
             base_url=None,
             https_allow_insecure=CONF.cloudstack.https_allow_insecure,
             https_ca_bundle=CONF.cloudstack.https_ca_bundle)
-
+        LOG.info('Init CloudStack')
         self._osutils = osutils_factory.get_os_utils()
         self._metadata_host = None
 

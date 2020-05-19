@@ -28,6 +28,7 @@ class HttpService(base.BaseHTTPMetadataService, baseos.BaseOpenStackService):
     _POST_PASSWORD_MD_VER = '2013-04-04'
 
     def __init__(self):
+        LOG.info('Init HttpService')
         super(HttpService, self).__init__(
             base_url=CONF.openstack.metadata_base_url,
             https_allow_insecure=CONF.openstack.https_allow_insecure,

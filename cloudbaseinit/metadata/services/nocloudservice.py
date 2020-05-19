@@ -28,6 +28,7 @@ LOG = oslo_logging.getLogger(__name__)
 class NoCloudConfigDriveService(baseconfigdrive.BaseConfigDriveService):
 
     def __init__(self):
+        LOG.info('Init CloudStack')
         super(NoCloudConfigDriveService, self).__init__(
             'cidata', 'meta-data')
         self._meta_data = {}

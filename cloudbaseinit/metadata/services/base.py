@@ -40,6 +40,7 @@ class BaseMetadataService(object):
     _GZIP_MAGIC_NUMBER = b'\x1f\x8b'
 
     def __init__(self):
+        LOG.info('Init BaseMetadataService')
         self._cache = {}
         self._enable_retry = False
 
@@ -268,6 +269,8 @@ class BaseHTTPMetadataService(BaseMetadataService):
 
     def __init__(self, base_url, https_allow_insecure=False,
                  https_ca_bundle=None):
+        LOG.info('Init BaseHTTPMetadataService')
+
         """Setup a new metadata service.
 
         :param https_allow_insecure:
