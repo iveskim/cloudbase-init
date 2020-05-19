@@ -38,6 +38,7 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
         # 读取文件数据
         norm_path = os.path.normpath(os.path.join(self._metadata_path, path))
         LOG.info('_get_data %s', norm_path)
+        return
         try:
             with open(norm_path, 'rb') as stream:
                 return stream.read()
