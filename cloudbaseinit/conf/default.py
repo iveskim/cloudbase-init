@@ -28,8 +28,8 @@ class GlobalOptions(conf_base.Options):
     def __init__(self, config):
         super(GlobalOptions, self).__init__(config, group="DEFAULT")
         self._options = [
-            cfg.BoolOpt(
-                'local_metadata_file', default="C:\Program Files\Cloudbase Solutions\Cloudbase-Init\meta_data.json",
+            cfg.StrOpt(
+                'local_metadata_file', default='C:\Program Files\Cloudbase Solutions\Cloudbase-Init\meta_data.json',
                 help='Local meta_data json file'),
             cfg.BoolOpt(
                 'allow_reboot', default=True,
