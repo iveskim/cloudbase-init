@@ -31,6 +31,9 @@ class GlobalOptions(conf_base.Options):
             cfg.StrOpt(
                 'local_metadata_file', default='C:\Program Files\Cloudbase Solutions\Cloudbase-Init\meta_data.json',
                 help='Local meta_data json file'),
+            cfg.StrOpt(
+                'default_log_levels', default='comtypes=ALL,suds=ALL,iso8601=ALL',
+                help='default_log_levels'),
             cfg.BoolOpt(
                 'allow_reboot', default=True,
                 help='Allows OS reboots requested by plugins'),
