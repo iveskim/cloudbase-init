@@ -10,7 +10,7 @@ LOG = oslo_logging.getLogger(__name__)
 oslo_logging.set_defaults(
     log_dir='C:\Program Files\Cloudbase Solutions\Cloudbase-Init',
 )
-
+print(CONF.log_dir)
 
 class LocalFileService(baseopenstackservice.BaseOpenStackService):
 
