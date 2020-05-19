@@ -8,7 +8,7 @@ from cloudbaseinit.metadata.services import baseopenstackservice
 CONF = cloudbaseinit_conf.CONF
 LOG = oslo_logging.getLogger(__name__)
 oslo_logging.set_defaults(
-        default_log_levels='DEBUG',
+    debug=True,
 
 )
 
