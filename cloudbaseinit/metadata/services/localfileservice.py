@@ -7,6 +7,10 @@ from cloudbaseinit.metadata.services import baseopenstackservice
 
 CONF = cloudbaseinit_conf.CONF
 LOG = oslo_logging.getLogger(__name__)
+oslo_logging.set_defaults(
+        default_log_levels='DEBUG',
+
+)
 
 
 class LocalFileService(baseopenstackservice.BaseOpenStackService):
@@ -20,7 +24,7 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
 
     def load(self):
         # 加载本地文件
-        LOG.info('Init LocalFileService load')
+        LOG.debug('Init LocalFileService load')
         super(LocalFileService, self).load()
         return self._meta_data_file_exists(self._metadata_path)
 
