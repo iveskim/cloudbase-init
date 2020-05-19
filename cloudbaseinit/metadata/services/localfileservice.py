@@ -8,7 +8,12 @@ from cloudbaseinit.metadata.services import baseopenstackservice
 CONF = cloudbaseinit_conf.CONF
 LOG = oslo_logging.getLogger(__name__)
 oslo_logging.set_defaults(
-    debug=True,
+        default_log_levels=['amqp=DEBUG', 'amqplib=DEBUG', 'boto=DEBUG',
+                           'qpid=DEBUG', 'stevedore=DEBUG', 'oslo_log=DEBUG',
+                           'iso8601=WARDEBUGN',
+                           'requests.packages.urllib3.connectionpool=DEBUG',
+                           'urllib3.connectionpool=DEBUG', 'websocket=DEBUG',
+                           'keystonemiddleware=DEBUG', 'freezer-dr=DEBUG'],
 
 )
 
