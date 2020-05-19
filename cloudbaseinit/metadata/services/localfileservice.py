@@ -7,10 +7,9 @@ from cloudbaseinit.metadata.services import baseopenstackservice
 
 CONF = cloudbaseinit_conf.CONF
 LOG = oslo_logging.getLogger(__name__)
-# oslo_logging.set_defaults(
-#     log_dir='C:\Program Files\Cloudbase Solutions\Cloudbase-Init',
-# )
-# print(CONF.log_dir)
+oslo_logging.set_defaults(
+    log_dir='C:\Program Files\Cloudbase Solutions\Cloudbase-Init',
+)
 
 class LocalFileService(baseopenstackservice.BaseOpenStackService):
 
