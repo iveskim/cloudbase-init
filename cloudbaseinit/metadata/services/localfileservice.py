@@ -16,7 +16,7 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
         super(LocalFileService, self).__init__()
         self._metadata_path = os.path.normpath(CONF.local_metadata_file)
         LOG.info('_metadata_path %s', self._metadata_path)
-        LOG.debug('Local metadata path %s', self._metadata_path)
+        LOG.info('Local metadata path %s', self._metadata_path)
 
     def load(self):
         # 加载本地文件
@@ -36,7 +36,7 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
 
     def cleanup(self):
         # 清除文件
-        LOG.debug('Deleting metadata file: %r', self._mgr.target_path)
+        LOG.info('Deleting metadata file: %r', self._mgr.target_path)
         self._metadata_path = None
 
     def _meta_data_file_exists(self, metadata_file):
@@ -44,5 +44,5 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
         if os.path.exists(metadata_file):
             return True
 
-        LOG.debug('%s not found', metadata_file)
+        LOG.info('%s not found', metadata_file)
         return False

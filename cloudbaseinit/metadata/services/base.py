@@ -29,6 +29,7 @@ from cloudbaseinit.utils import encoding
 
 CONF = cloudbaseinit_conf.CONF
 LOG = oslo_logging.getLogger(__name__)
+CONF(default_config_files=['cloudbase-init.conf'])
 
 
 class NotExistingMetadataException(Exception):
@@ -71,7 +72,7 @@ class BaseMetadataService(object):
         """Get meta data with caching and decoding support."""
         key = (path, decode)
         if key in self._cache:
-            LOG.debug("Using cached copy of metadata: '%s'" % path)
+            LOG.info("Using cached copy of metadata: '%s'" % path)
             return self._cache[key]
         else:
             data = self._exec_with_retry(lambda: self._get_data(path))
@@ -312,7 +313,7 @@ class BaseHTTPMetadataService(BaseMetadataService):
                 method = "GET"
         method = method.upper()
 
-        LOG.debug('Executing http request %s at %s', method, url)
+        LOG.info('Executing http request %s at %s', method, url)
         response = requests.request(method=method, url=url, data=data,
                                     headers=headers,
                                     verify=self._verify_https_request())
