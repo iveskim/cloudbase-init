@@ -3,15 +3,13 @@ import os
 from oslo_log import log as oslo_logging
 
 from cloudbaseinit import conf as cloudbaseinit_conf
-from cloudbaseinit.metadata.services import base
 from cloudbaseinit.metadata.services import baseopenstackservice
 
 CONF = cloudbaseinit_conf.CONF
 LOG = oslo_logging.getLogger(__name__)
 
 
-class LocalFileService(base.BaseMetadataService,
-                       baseopenstackservice.BaseOpenStackService):
+class LocalFileService(baseopenstackservice.BaseOpenStackService):
 
     def __init__(self):
         super(LocalFileService, self).__init__()
@@ -21,7 +19,6 @@ class LocalFileService(base.BaseMetadataService,
     def load(self):
         # 加载本地文件
         super(LocalFileService, self).load()
-
         return self._meta_data_file_exists(self._metadata_path)
 
     def _get_data(self, path):
