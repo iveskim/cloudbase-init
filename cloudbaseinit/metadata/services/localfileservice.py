@@ -19,10 +19,12 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
 
     def load(self):
         # 加载本地文件
+        LOG.info('Init LocalFileService load')
         super(LocalFileService, self).load()
         return self._meta_data_file_exists(self._metadata_path)
 
     def _get_data(self, path):
+        LOG.info('Init LocalFileService _get_data')
         # 读取文件数据
         norm_path = os.path.normpath(os.path.join(self._metadata_path, path))
         try:
