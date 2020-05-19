@@ -12,6 +12,7 @@ LOG = oslo_logging.getLogger(__name__)
 class LocalFileService(baseopenstackservice.BaseOpenStackService):
 
     def __init__(self):
+        LOG.info('Init LocalFileService')
         super(LocalFileService, self).__init__()
         self._metadata_path = os.path.normpath(CONF.local_metadata_file)
         LOG.debug('Local metadata path %s', self._metadata_path)
