@@ -29,7 +29,6 @@ from cloudbaseinit.utils import encoding
 
 CONF = cloudbaseinit_conf.CONF
 LOG = oslo_logging.getLogger(__name__)
-CONF(default_config_files=['cloudbase-init.conf'])
 
 
 class NotExistingMetadataException(Exception):
