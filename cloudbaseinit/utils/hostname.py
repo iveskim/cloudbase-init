@@ -52,6 +52,8 @@ def set_hostname(osutils, hostname):
                       'new_hostname': hostname[:NETBIOS_HOST_NAME_MAX_LEN]})
             hostname = hostname[:NETBIOS_HOST_NAME_MAX_LEN]
     hostname = re.sub(r'-$', '0', hostname)
+    LOG.debug("platform.node().lower() %s" % platform.node().lower())
+    LOG.debug("hostname.lower() %s" % hostname.lower())
     if platform.node().lower() == hostname.lower():
         LOG.debug("Hostname already set to: %s" % hostname)
         reboot_required = False
