@@ -752,6 +752,7 @@ class WindowsUtils(base.BaseOSUtils):
         return value.replace('"', '\\"')
 
     def set_host_name(self, new_host_name):
+        LOG.debug("windows set_host_name")
         ret_val = kernel32.SetComputerNameExW(
             self.ComputerNamePhysicalDnsHostname,
             six.text_type(new_host_name))

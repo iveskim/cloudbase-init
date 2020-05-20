@@ -26,6 +26,8 @@ class SetHostNamePlugin(base.BasePlugin):
         osutils = osutils_factory.get_os_utils()
         metadata_host_name = service.get_host_name()
 
+        LOG.info('SetHostNamePlugin %s', metadata_host_name)
+
         if not metadata_host_name:
             LOG.debug('Hostname not found in metadata')
             return base.PLUGIN_EXECUTION_DONE, False
