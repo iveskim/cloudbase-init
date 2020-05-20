@@ -26,7 +26,7 @@ LOG = oslo_logging.getLogger(__name__)
 
 
 def main():
-    CONF(["--log-dir=C:\Program Files\Cloudbase Solutions\Cloudbase-Init"])
+    CONF(default_config_files=['default.cfg'])
     #CONF(sys.argv[1:])
     logging.setup('cloudbaseinit')
 
