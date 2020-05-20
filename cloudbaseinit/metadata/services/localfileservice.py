@@ -14,7 +14,6 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
         LOG.info('Init LocalFileService')
         super(LocalFileService, self).__init__()
         self._metadata_path = os.path.normpath(CONF.local_metadata_file)
-        LOG.info('_metadata_path %s', self._metadata_path)
         LOG.info('Local metadata path %s', self._metadata_path)
 
     def load(self):
@@ -26,9 +25,7 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
     def _get_data(self, path):
         LOG.info('Init LocalFileService _get_data')
         # 读取文件数据
-        norm_path = os.path.normpath(os.path.join(self._metadata_path, path))
-        LOG.info('_get_data %s', norm_path)
-        return
+        norm_path = os.path.normpath(self._metadata_path)
         try:
             with open(norm_path, 'rb') as stream:
                 return stream.read()
