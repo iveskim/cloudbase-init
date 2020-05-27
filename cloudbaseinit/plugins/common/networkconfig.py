@@ -189,14 +189,17 @@ class NetworkConfigPlugin(plugin_base.BasePlugin):
 
     @staticmethod
     def _process_physical_links(osutils, network_details):
+        LOG.info("_process_physical_links")
         physical_links = [
             link for link in network_details.links if
             link.type == network_model.LINK_TYPE_PHYSICAL]
 
         for link in physical_links:
+            LOG.info("_process_physical_links for link")
             adapter_name = osutils.get_network_adapter_name_by_mac_address(
                 link.mac_address)
-
+            LOG.info("mac_address%s", link.mac_address)
+            LOG.info("adapter_name %s", adapter_name)
             if adapter_name != link.name:
                 LOG.info(
                     "Renaming network adapter \"%(old_name)s\" to "
@@ -304,7 +307,6 @@ class NetworkConfigPlugin(plugin_base.BasePlugin):
     def execute(self, service, shared_data):
         LOG.info("zhixingle networkconfig execute")
         network_details = service.get_network_details_v2()
-        LOG.info("zhixingle", network_details)
         if network_details:
             LOG.info("zhixingle networkconfig _process_network_details_v2")
             return self._process_network_details_v2(network_details)
