@@ -57,6 +57,7 @@ class BaseOpenStackService(base.BaseMetadataService):
     def _get_openstack_json_data(self, version, file_name):
         path = posixpath.normpath(
             posixpath.join('openstack', version, file_name))
+        LOG.info("_get_openstack_json_data %s", path)
         data = self._get_cache_data(path, decode=True)
         if data:
             return json.loads(data)
