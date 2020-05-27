@@ -1,0 +1,38 @@
+{
+  "links": [
+    { // Example of physical NICs
+        "id": "eth0",
+        "type": "phy",
+        "ethernet_mac_address": "52:54:00:40:78:2a",
+        "mtu": 9000
+    }
+],
+"networks": [
+    { // Standard VM VIF networking
+        "id": "private-ipv4",
+        "type": "ipv4",
+        "link": "eth0",
+        "ip_address": "10.184.0.244",
+        "netmask": "255.255.240.0",
+        "routes": [
+            {
+                "network": "10.0.0.0",
+                "netmask": "255.0.0.0",
+                "gateway": "11.0.0.1"
+            },
+            {
+                "network": "0.0.0.0",
+                "netmask": "0.0.0.0",
+                "gateway": "23.253.157.1"
+            }
+        ],
+        "network_id": "da5bb487-5193-4a65-a3df-4a0055a8c0d7"
+    }
+],
+"services": [
+    {
+        "type": "dns",
+        "address": "8.8.8.8"
+    }
+]
+}
