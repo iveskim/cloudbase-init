@@ -304,6 +304,7 @@ class NetworkConfigPlugin(plugin_base.BasePlugin):
     def execute(self, service, shared_data):
         LOG.info("zhixingle networkconfig execute")
         network_details = service.get_network_details_v2()
+        LOG.info("zhixingle", network_details)
         if network_details:
             LOG.info("zhixingle networkconfig _process_network_details_v2")
             return self._process_network_details_v2(network_details)
