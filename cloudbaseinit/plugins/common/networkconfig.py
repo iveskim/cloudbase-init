@@ -309,7 +309,7 @@ class NetworkConfigPlugin(plugin_base.BasePlugin):
         network_details = service.get_network_details_v2()
         if network_details:
             LOG.info("zhixingle networkconfig _process_network_details_v2")
-            LOG.info("network_details %s", ''.join(network_details))
+            # LOG.info("network_details %s", ''.join(network_details))
             return self._process_network_details_v2(network_details)
 
         network_details = service.get_network_details()
