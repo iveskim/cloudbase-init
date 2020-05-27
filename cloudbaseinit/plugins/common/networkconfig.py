@@ -302,6 +302,7 @@ class NetworkConfigPlugin(plugin_base.BasePlugin):
         return plugin_base.PLUGIN_EXECUTION_DONE, reboot_required
 
     def execute(self, service, shared_data):
+        LOG.info("zhixingle networkconfig execute")
         network_details = service.get_network_details_v2()
         if network_details:
             return self._process_network_details_v2(network_details)
