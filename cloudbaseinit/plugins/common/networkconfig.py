@@ -305,10 +305,12 @@ class NetworkConfigPlugin(plugin_base.BasePlugin):
         LOG.info("zhixingle networkconfig execute")
         network_details = service.get_network_details_v2()
         if network_details:
+            LOG.info("zhixingle networkconfig _process_network_details_v2")
             return self._process_network_details_v2(network_details)
 
         network_details = service.get_network_details()
         if network_details:
+            LOG.info("zhixingle networkconfig _process_network_details")
             return self._process_network_details(network_details)
 
         return plugin_base.PLUGIN_EXECUTION_DONE, False
