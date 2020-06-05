@@ -26,8 +26,8 @@ LOG = oslo_logging.getLogger(__name__)
 
 
 def main():
-    CONF(default_config_files=['default.cfg'])
-    #CONF(sys.argv[1:])
+    #CONF(default_config_files=['default.cfg'])
+    CONF(sys.argv[1:])
     logging.setup('cloudbaseinit')
 
     try:
