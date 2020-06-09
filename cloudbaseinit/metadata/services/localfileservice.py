@@ -47,3 +47,18 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
 
         LOG.info('%s not found', metadata_file)
         return False
+
+    @property
+    def can_update_password(self):
+        """The ability to update password of the metadata provider.
+
+        If :meth:`~can_update_password` is True, plugins can check
+        periodically (e.g. at every boot) if the password changed.
+
+        :rtype: bool
+
+        .. notes:
+            The password will be updated only if the
+            :meth:`~is_password_changed` returns True.
+        """
+        return True
