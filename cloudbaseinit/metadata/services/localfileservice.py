@@ -62,3 +62,14 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
             :meth:`~is_password_changed` returns True.
         """
         return True
+
+    def is_password_changed(self):
+        """Check if the metadata provider has a new password for this instance
+
+        :rtype: bool
+
+        .. notes:
+            This method will be used only when :meth:`~can_update_password`
+            is True.
+        """
+        return True
