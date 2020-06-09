@@ -26,18 +26,18 @@ if response.getcode() == 200:
     p = response.read()
 
     if p == "":
-        print "Error: Empty Password!"
+        print ("Error: Empty Password!")
         exit(1)
 
     set_password(u, p)
 
     if verify_success(u, p):
-        print "Password Changed"
+        print ("Password Changed")
         exit(0)
     else:
-        print "Password Change Failed"
+        print ("Password Change Failed")
         exit(1)
 else:
-    print "Failed to get password"
-    print response.getcode()
+    print ("Failed to get password")
+    print (response.getcode())
     exit(1)
