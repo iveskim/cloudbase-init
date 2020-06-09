@@ -15,14 +15,15 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
     def __init__(self):
         LOG.info('Init LocalFileService')
         super(LocalFileService, self).__init__()
-        self._metadata_path = os.path.normpath(CONF.local_metadata_file)
+        self._metadata_path = os.path.normpath(CONF.local_metadata_file_path)
+        self._metadata_file = os.path.normpath(CONF.local_metadata_file)
         LOG.info('Local metadata path %s', self._metadata_path)
 
     def load(self):
         # 加载本地文件
-        LOG.debug('Init LocalFileService load')
+        LOG.debug('Init LocalFileService load %s', self._metadata_file)
         super(LocalFileService, self).load()
-        return self._meta_data_file_exists(self._metadata_path)
+        return self._meta_data_file_exists(self._metadata_file)
 
     def _get_data(self, path):
         LOG.info('Init LocalFileService _get_data')
