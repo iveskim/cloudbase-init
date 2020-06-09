@@ -55,6 +55,7 @@ class InitManager(object):
         reboot_required = None
         success = True
         status = None
+        LOG.info('_exec_plugin')
         if instance_id is not None:
             status = self._get_plugin_status(osutils, instance_id, plugin_name)
         if status == plugins_base.PLUGIN_EXECUTION_DONE:
