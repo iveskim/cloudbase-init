@@ -109,6 +109,7 @@ class SetUserPasswordPlugin(base.BasePlugin):
             osutils.change_password_next_logon(username)
 
     def execute(self, service, shared_data):
+        LOG.info("setuserpassword")
         # TODO(alexpilotti): The username selection logic must be set in the
         # CreateUserPlugin instead if using CONF.username
         user_name = shared_data.get(plugin_constant.SHARED_DATA_USERNAME,
