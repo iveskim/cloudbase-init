@@ -178,7 +178,7 @@ class NetLBFOTeamManager(network_team.BaseNetworkTeamManager):
             raise ex
 
     @staticmethod
-    @retry_decorator.retry_decorator(max_retry_count=10)
+    @retry_decorator.retry_decorator(max_retry_count=300)
     def _wait_for_nic(nic_name):
         conn = wmi.WMI(moniker='//./root/cimv2')
         if not conn.Win32_NetworkAdapter(NetConnectionID=nic_name):
