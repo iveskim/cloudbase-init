@@ -1,5 +1,6 @@
 
 import os
+import shutil
 from oslo_log import log as oslo_logging
 
 from cloudbaseinit import conf as cloudbaseinit_conf
@@ -28,16 +29,18 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
     def _get_data(self, path):
         LOG.info('Init LocalFileService _get_data')
         # 读取文件数据
-        norm_path = os.path.normpath(os.path.join(self._metadata_path, path))
+        self._metadata_norm_path = os.path.normpath(os.path.join(self._metadata_path, path))
+
         try:
-            with open(norm_path, 'rb') as stream:
+            with open(self._metadata_norm_path, 'rb') as stream:
                 return stream.read()
         except IOError:
             raise base.NotExistingMetadataException()
 
     def cleanup(self):
         # 清除文件
-        #LOG.info('Deleting metadata file: %r', self._mgr.target_path)
+        LOG.debug('Deleting metadata folder: %r', self._metadata_norm_path)
+        shutil.rmtree(self._mgr.target_path, ignore_errors=True)
         self._metadata_path = None
 
     def _meta_data_file_exists(self, metadata_file):
