@@ -17,6 +17,7 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
         super(LocalFileService, self).__init__()
         self._metadata_path = os.path.normpath(CONF.local_metadata_file_path)
         self._metadata_file = os.path.normpath(CONF.local_metadata_file)
+        self._password_path = os.path.normpath(os.path.join(self._metadata_path, 'openstack\\latest\\password_data.json'))
         LOG.info('Local metadata path %s', self._metadata_path)
 
     def load(self):
@@ -79,12 +80,14 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
         return password
 
     def _get_password_data(self, version='latest'):
-        return self._get_openstack_json_data(version, 'password_data.json')
+        if os.path.exists(self.password_path):
+            return self._get_openstack_json_data(version, 'password_data.json')
+        else:
+            return None
 
     def _delete_password(self):
-        password_path = os.path.normpath(os.path.join(self._metadata_path, 'openstack\\latest\\password_data.json'))
         try:
-            os.remove(password_path)
+            os.remove(self.password_path)
         except OSError:  # pragma: no cover
             pass
 
