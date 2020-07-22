@@ -80,14 +80,14 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
         return password
 
     def _get_password_data(self, version='latest'):
-        if os.path.exists(self.password_path):
+        if os.path.exists(self._password_path):
             return self._get_openstack_json_data(version, 'password_data.json')
         else:
             return None
 
     def _delete_password(self):
         try:
-            os.remove(self.password_path)
+            os.remove(self._password_path)
         except OSError:  # pragma: no cover
             pass
 
