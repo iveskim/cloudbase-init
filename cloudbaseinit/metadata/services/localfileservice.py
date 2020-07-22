@@ -40,7 +40,7 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
     def cleanup(self):
         # 清除文件
         LOG.debug('Deleting metadata folder: %r', self._metadata_norm_path)
-        shutil.rmtree(self._mgr.target_path, ignore_errors=True)
+        shutil.rmtree(self._metadata_norm_path, ignore_errors=True)
         self._metadata_path = None
 
     def _meta_data_file_exists(self, metadata_file):
