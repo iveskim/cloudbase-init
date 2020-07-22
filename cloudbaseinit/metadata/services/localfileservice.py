@@ -55,6 +55,9 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
 
     def get_admin_username(self):
         meta_data = self._get_password_data()
+        if meta_data is None:
+            return None
+
         meta = meta_data.get('meta')
 
         if meta and 'name' in meta:
@@ -68,6 +71,9 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
 
     def _get_password(self):
         meta_data = self._get_password_data()
+        if meta_data is None:
+            return None
+
         meta = meta_data.get('meta')
 
         if meta and 'admin_pass' in meta:
