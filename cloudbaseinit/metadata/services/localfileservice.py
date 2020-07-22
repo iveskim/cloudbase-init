@@ -71,6 +71,7 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
 
     def _get_password(self):
         meta_data = self._get_password_data()
+        LOG.info('password meta_data %s', meta_data)
         if meta_data is None:
             return None
 
@@ -86,6 +87,7 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
         return password
 
     def _get_password_data(self, version='latest'):
+        LOG.info('password path %s', self._password_path)
         if os.path.exists(self._password_path):
             return self._get_openstack_json_data(version, 'password_data.json')
         else:
@@ -122,4 +124,5 @@ class LocalFileService(baseopenstackservice.BaseOpenStackService):
 
     def is_password_changed(self):
         """Check if a new password exists in the Password File."""
+        LOG.debug('is_password_changed %s', self._get_password())
         return bool(self._get_password())
